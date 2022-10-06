@@ -1,5 +1,8 @@
 package ex3;
 
+import ex3.Color;
+import ex3.ConsumoEnergetico;
+
 public class Electrodomestico {
 	// Atributos
 	protected double precioBase;
@@ -7,29 +10,19 @@ public class Electrodomestico {
 	protected String consumoEnergetico;
 	protected double peso;
 
-	//Enum con los posibles colores
-	private enum enumColor {
-		blanco, negro, rojo, azul, gris
-	}
-
-	//Enum con los posibles consumos
-	private enum enumConsumoEnergetico {
-		A, B, C, D, E, F
-	};
-
 	// Constructor por defecto
 	public Electrodomestico() {
 		this.precioBase = 100;
-		this.color = enumColor.blanco.toString();
-		this.consumoEnergetico = enumConsumoEnergetico.F.toString();
+		this.color = Color.blanco.toString();
+		this.consumoEnergetico = ConsumoEnergetico.F.toString();
 		this.peso = 5.0;
 	}
 
 	// Constructor con precio y peso como parámetros
 	public Electrodomestico(double precio, double peso) {
 		this.precioBase = precio;
-		this.color = enumColor.blanco.toString();
-		this.consumoEnergetico = enumConsumoEnergetico.F.toString();
+		this.color = Color.blanco.toString();
+		this.consumoEnergetico = ConsumoEnergetico.F.toString();
 		this.peso = peso;
 	}
 
@@ -52,18 +45,17 @@ public class Electrodomestico {
 		String c = "";
 		// Primero asignamos el valor por defecto, este cambiará si el parámetro color
 		// es válido
-		c = enumColor.blanco.toString();
+		c = Color.blanco.toString();
 		
 		// Recorremos el enum de color y ponemos el parámetro color todo en minúsculas
 		// para que se puedan comparar sin problemas
-		for (enumColor miColor : enumColor.values()) {
+		for (Color miColor : Color.values()) {
 			if (colorC.toLowerCase().equals(miColor.toString())) {
 				c = colorC.toLowerCase();
 			}
 		}
 
 		return c;
-
 	}
 
 	// Método para comprobar el nombre del consumo pasado por parámetro en el constructor
@@ -71,11 +63,11 @@ public class Electrodomestico {
 		String co = "";
 		// Primero asignamos el valor por defecto, este cambiará si el parámetro consumo
 		// es válido
-		co = enumConsumoEnergetico.F.toString();
+		co = ConsumoEnergetico.F.toString();
 		
 		// Recorremos el enum de colorEnergetico y ponemos el parámetro consumo todo en
 		// mayúsculas para que se puedan comparar sin problemas
-		for (enumConsumoEnergetico miConsumo : enumConsumoEnergetico.values()) {
+		for (ConsumoEnergetico miConsumo : ConsumoEnergetico.values()) {
 			if (consumoC.toUpperCase().equals(miConsumo.toString())) {
 				co = consumoC.toUpperCase();
 			}
