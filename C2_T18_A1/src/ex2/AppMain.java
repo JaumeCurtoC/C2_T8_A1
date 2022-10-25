@@ -1,4 +1,4 @@
-package ex1;
+package ex2;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,20 +12,21 @@ public class AppMain {
 	static Connection connection;
 	
 	public static void main(String[] args) {
-		CreateDB cdb = new CreateDB();
-		Fabricantes f = new Fabricantes();
-		Articulos a = new Articulos();
+		CrearDB cdb = new CrearDB();
+		Departamentos d = new Departamentos();
+		Empleados e = new Empleados();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://192.168.0.45:3306?useTimezone=true&serverTimezone=UTC","remote","Arcangel1999!");
 			System.out.println("Server Connected");
+			
 			cdb.crearDB();
 			
-			f.createTable();
-			f.insertFabricantes();
+			d.createTable();
+			d.insertDepartamentos();
 			
-			a.createTable();
-			a.insertArticulos();
+			e.createTable();
+			e.insertEmpleados();
 			
 			closeConnection();
 		}catch(SQLException | ClassNotFoundException ex) {
@@ -42,4 +43,5 @@ public class AppMain {
 			Logger.getLogger(AppMain.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+
 }
